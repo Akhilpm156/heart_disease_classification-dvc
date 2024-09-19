@@ -1,0 +1,58 @@
+schema: '2.0'
+stages:
+  data_preprocess 01:
+    cmd: python src/data_preprocessing.py
+    deps:
+    - path: data/unzipped_data/heart-disease.csv
+      hash: md5
+      md5: f8376ac9db4d25345aead44787474f27
+      size: 11328
+    - path: src/data_preprocessing.py
+      hash: md5
+      md5: d3c2eb4ecc3d205b9b875daba397c851
+      size: 1427
+    outs:
+    - path: data/X_test.csv
+      hash: md5
+      md5: dd34ff2a99789f02af24f1f0871f78fa
+      size: 2268
+    - path: data/X_train.csv
+      hash: md5
+      md5: f762260991cf0606789f459670dde6c4
+      size: 8778
+    - path: data/y_test.csv
+      hash: md5
+      md5: 22e834b1db95f732653ed324bcabd3b3
+      size: 191
+    - path: data/y_train.csv
+      hash: md5
+      md5: e768c29db0947087cd288d218794d3c5
+      size: 734
+  Training Model 02:
+    cmd: python src/model_training.py
+    deps:
+    - path: data/X_test.csv
+      hash: md5
+      md5: dd34ff2a99789f02af24f1f0871f78fa
+      size: 2268
+    - path: data/X_train.csv
+      hash: md5
+      md5: f762260991cf0606789f459670dde6c4
+      size: 8778
+    - path: data/y_test.csv
+      hash: md5
+      md5: 22e834b1db95f732653ed324bcabd3b3
+      size: 191
+    - path: data/y_train.csv
+      hash: md5
+      md5: e768c29db0947087cd288d218794d3c5
+      size: 734
+    - path: src/model_training.py
+      hash: md5
+      md5: 24eec38ce57ebb18c52e09dd1ea9e7c0
+      size: 2265
+    outs:
+    - path: models/random_forest_model.pkl
+      hash: md5
+      md5: 7d9d5e09f67b7cc65e44887c15fb8f5a
+      size: 1091289
