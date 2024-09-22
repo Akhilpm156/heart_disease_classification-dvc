@@ -1,13 +1,7 @@
 import pandas as pd
 from sklearn.model_selection import train_test_split
 import os
-import zipfile
 
-def unzip_file(zip_path, extract_to_folder):
-    """Unzips a zip file into the specified folder."""
-    with zipfile.ZipFile(zip_path, 'r') as zip_ref:
-        zip_ref.extractall(extract_to_folder)
-        print(f"Extracted {zip_path} to {extract_to_folder}")
 
 def load_data(file_path):
     """Loads data from a CSV file into a DataFrame."""
@@ -29,20 +23,8 @@ def preprocess_data(data):
     return X_train, X_test, y_train, y_test
 
 def main():
-    # Define paths
-    zip_file_path = 'data/archive.zip'  
-    extraction_path = 'data/unzipped_data/'
-    extracted_file_name = 'heart-disease.csv'  
-    csv_file_path = os.path.join(extraction_path, extracted_file_name)    
-
-    # Ensure extraction path exists
-    os.makedirs(extraction_path, exist_ok=True)
-
-    # Unzip the file if it hasn't been extracted yet
-    if not os.path.isfile(csv_file_path):
-        unzip_file(zip_file_path, extraction_path)
-    else:
-        print(f"{csv_file_path} already exists, skipping extraction.")
+    # Define paths  
+    csv_file_path = 'data/unzipped_data/heart-disease.csv'      
 
     # Load the data
     data = load_data(csv_file_path)

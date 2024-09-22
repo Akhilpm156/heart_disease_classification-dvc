@@ -1,0 +1,24 @@
+stages:
+  data_preprocess 01:
+    cmd: python src/data_preprocessing.py
+    deps:
+    - data/unzipped_data/heart-disease.csv
+    - src/data_preprocessing.py
+    outs:
+    - data/X_train.csv
+    - data/X_test.csv
+    - data/y_train.csv
+    - data/y_test.csv
+
+  Training Model 02:
+    cmd: python src/model_training.py
+    deps:
+     - src/model_training.py
+     - data/X_train.csv
+     - data/X_test.csv
+     - data/y_train.csv
+     - data/y_test.csv
+    outs:
+     - models/random_forest_model.pkl
+    
+
