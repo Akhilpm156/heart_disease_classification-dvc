@@ -1,4 +1,6 @@
 [core]
-    remote = dvcdata
+    remote = dvc_data
 ['remote "dvcdata"']
     url = ../data/unzipped_data
+['remote "dvc_data"']
+    url = ../UsersAkhilDesktopLearningpysourcesPortableGitdvc_data
