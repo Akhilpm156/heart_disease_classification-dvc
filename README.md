@@ -5,10 +5,9 @@
 <pre>
 heart_disease/
 ├── data/
-│   ├── archive.zip
 │   ├── train.csv
 │   ├── test.csv
-│   └── unzipped_data/
+│   └── unzipped_data/example.csv
 ├── models/
 │   └── model.pkl
 ├── notebooks/
